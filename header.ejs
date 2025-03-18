@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laber Company</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/sites">Sites</a></li>
+            <li><a href="/admin">Dashboard</a></li>
+            <li><a href="/products">Produtos</a></li>
+            <li><a href="/services">Serviços</a></li>
+            <li><a href="/contact">Contato</a></li>
+            <li><a href="/support">Suporte</a></li>
+        </ul>
+
+        <% if (isAuthenticated) { %>
+            <div class="profile-dropdown">
+                <% if (user.profileImage) { %>
+                    <div class="profile-name"> <%= user.nome %> <%= user.sobrenome %></div>
+                    <img src="<%= user.profileImage %>" alt="Foto de Perfil" class="profile-image">
+                <% } else { %>
+                    <div class="profile-name">Convidado</div>
+                    <div class="profile-image placeholder"></div>
+                <% } %>
+                <div class="profile-dropdown-content">
+                    <a href="/account">Minha Conta</a>
+                    <a href="/profile">Perfil</a>
+                    <a href="/logout">Sair</a>
+                </div>
+            </div>
+            
+        <% } else { %>
+            <ul>
+                <li><a href="/register">Registrar-se</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        <% } %>
+    </nav>
+</head>
+</body>
+</html>
